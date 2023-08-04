@@ -12,7 +12,7 @@ const AppBar = ({ title }) => {
 const styles = StyleSheet.create({
   appBar: {
     backgroundColor: '#212121',
-    height: '20%',
+    height: '10%',
     flexDirection: 'row',
     alignItems: 'flex-start', 
     justifyContent: 'center',

@@ -29,18 +29,13 @@ export default function App() {
 
     // Update the state with the BMI result
     setBmiResult(bmi.toFixed(2));
-
-    if(bmi == 'NaN') {
-      setBmiResult('Enter Proper Height and Weight');
-      setBmiStatus('');
-    }
     
     if (bmi > 24.9) {
-      setBmiStatus('Overweight...Try redusing ur weight!')
+      setBmiStatus('Overweight!')
     } else if (bmi < 18.5){
-      setBmiStatus('Underweight...Please eat!')
+      setBmiStatus('Underweight!')
     } else {
-      setBmiStatus('Normal...Well done!')
+      setBmiStatus('Normal!')
     }
     
     console.log('BMI:', bmi);
@@ -70,7 +65,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    // display: flex,
     alignItems: 'center',
     justifyContent: 'center',
   },
