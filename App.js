@@ -24,33 +24,34 @@ export default function App() {
     const heightInMeters = parseFloat(height) / 100; 
     const weightInKg = parseFloat(weight);
 
-    // Calculate BMI
-    const bmi = weightInKg / (heightInMeters * heightInMeters);
-
-    // Update the state with the BMI result
-    setBmiResult(bmi.toFixed(2));
-    
-    if (bmi > 24.9) {
-      setBmiStatus('Overweight!')
-    } else if (bmi < 18.5){
-      setBmiStatus('Underweight!')
-    } else {
-      setBmiStatus('Normal!')
-    }
-    
-    console.log('BMI:', bmi);
+    if (isNaN(weightInKg) || isNaN(heightInMeters) || heightInMeters === 0) {
+      setBmiResult("Invalid Input");
+      setBmiStatus("");
+      } else {
+      const bmi = (weightInKg / (heightInMeters * heightInMeters)).toFixed(2);
+      setBmiResult(bmi);
+      if (bmi > 24.9) {
+        setBmiStatus('Overweight!')
+      } else if (bmi < 18.5){
+        setBmiStatus('Underweight!')
+      } else {
+        setBmiStatus('Normal!')
+      }
+      
+      console.log('BMI:', bmi);
+      }
   };
 
 
   return (
     <View style={styles.container}>
-      <AppBar title={'BMI CALCULATOR'} />
+      <AppBar />
       <View style={styles.contentContainer}>
         <MyTextField hintText="Enter height" onChangeText={handleHeightChange} />
         <MyTextField hintText="Enter weight" onChangeText={handleWeightChange} />
-        <View style={styles.contentRowContainer}>
-        <Button title="Calculate" onPress={handleButtonPress} value={handleButtonPress} style={styles.padding} />
-        </View>
+      <View style={styles.contentRowContainer}>
+        <Button title="Calculate" onPress={handleButtonPress} value={handleButtonPress} />
+      </View>
         <Text style={styles.padding}>BMI: {bmiResult}</Text>
         <Text style={styles.padding}>{bmiStatus}</Text>
       </View>

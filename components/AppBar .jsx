@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const AppBar = () => {
   return (
       <View style={styles.header}>
-          <Text style={styles.title}>My todos</Text>
+          <Text style={styles.title}>BMI CALCULATOR</Text>
       </View>
   )
 }
